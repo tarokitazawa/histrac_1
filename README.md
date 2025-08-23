@@ -34,14 +34,9 @@ HisTrac-seq enzymatically labels genomic DNA adenine to “bookmark” regulator
 - JASPAR2024 database
 - pheatmap (1.0.13)
 
-### Python
+### single-cell analysis
 - Included in Cell Ranger ATAC (10x Genomics v2.0.0)
-- nanoscope pipeline (from Bartosovic lab)
+- [Nanoscope pipeline](https://github.com/bartosovic-lab/nanoscope) (bartosovic-lab)
 
 ### Visualization
 - IGV (v2.16.0)
-
-## Single-cell analysis with Nanoscope
-For single-cell Dam&Tag / HisTrac-seq data, we used the
-[Nanoscope pipeline](https://github.com/bartosovic-lab/nanoscope) 
-(bartosovic-lab).  
