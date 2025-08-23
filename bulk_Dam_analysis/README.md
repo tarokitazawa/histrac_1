@@ -59,3 +59,13 @@ This directory contains the scripts and pipelines used for **bulk DamID-seq** an
 ## GATC regions of mm10
 - mm10_GATC.bed
 ---
+---
+
+## Data
+- Bulk E-MTAB-15336
+---
+
+## Citation
+Kawamura YK, Khalil V, Kitazawa T (2025).
+Whole-genome single-cell multimodal history tracing to reveal cell identity transition.
+bioRxiv. https://doi.org/10.1101/2025.08.12.669973
