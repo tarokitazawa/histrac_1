@@ -59,7 +59,7 @@ This directory contains the scripts and pipelines used for **bulk DamID-seq** an
 ## GATC regions of mm10
 - mm10_GATC.bed
 ---
----
+
 
 ## Data
 - Bulk E-MTAB-15336
