@@ -49,13 +49,13 @@ This directory contains the scripts and pipelines used for **bulk DamID-seq** an
 - Generate bigwig by QuasR
 - Generate FreeDam-normalized bigwig by deepTools
 - Visualization with IGV
-
-### examples of raw fastq files (paried end)
+---
+## examples of raw fastq files (paried end)
 - DamID-seq fastq files: /path/to/your/project/raw_fastq_filepaths_dam.txt
 - Dam&Tag fastq files: /path/to/your/project/raw_fastq_filepaths_damtag.txt
 - Read1: /path/to/your/raw_fastq/sample1_R1_001.fastq.gz
 - Read2: /path/to/your/raw_fastq/sample1_R2_001.fastq.gz
-
-### GATC regions of mm10
+---
+## GATC regions of mm10
 - mm10_GATC.bed
 ---
