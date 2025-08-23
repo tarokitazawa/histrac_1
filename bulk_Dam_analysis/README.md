@@ -6,7 +6,7 @@ This directory contains the scripts and pipelines used for **bulk DamID-seq** an
 
 ## Overview
 
-- Preprocessing of bulk DamID-seq reads
+- Preprocessing of bulk DamID-seq and Dam&Tagreads
 - Generation of normalized coverage tracks 
 - Quantification of m6A signals over genomic features 
 - Visualization of results
@@ -33,7 +33,7 @@ This directory contains the scripts and pipelines used for **bulk DamID-seq** an
 - Trim adapters (NEB Next) using cutadapt. Filter DamID reads to retain DpnI-derived fragments (5′ TC overhang)
 - Align to **mm10** reference genome using Bowtie2. Convert and sort BAM files with samtools
 
-### 1b. Preprocessing for DamID&Tag
+### 1b. Preprocessing for Dam&Tag
 - Trim adapters (Illumina Nextera) using cutadapt
 - Align to **mm10** reference genome using Bowtie2. Convert and sort BAM files with samtools
 
