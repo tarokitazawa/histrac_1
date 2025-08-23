@@ -8,6 +8,7 @@ However, the default **Nanoscope output structure** nests each modality directly
 
 ## Original Nanoscope Output (per experiment)
 
+```
 Day7R_Rep1/
 ├── Day7R.Dam.rep1_CCTATCCT/
 │   ├── barcode_metrics/
@@ -81,7 +82,7 @@ Day7R_Rep2/
     └── peaks/
         └── macs_broad/
             └── Day7R.K27ac.rep2_peaks.broadPeak
-
+```
 Each modality folder name encodes the sample ID, replicate ID, and barcode sequence.
 
 ---
@@ -90,6 +91,7 @@ Each modality folder name encodes the sample ID, replicate ID, and barcode seque
 
 To simplify merging across replicates, we reorganized outputs into the following structure:
 
+```
 Day7R_MERGED/
 ├── rep1/
 │   ├── Day7R.Dam_bb/
@@ -164,7 +166,7 @@ Day7R_MERGED/
         └── peaks/
             └── macs_broad/
                 └── Day7R.K27ac_peaks.broadPeak
-
+```
 
 ### Key Changes
 - **Replicate-level directories (`rep1`, `rep2`)** were introduced at the top level.  
@@ -196,6 +198,8 @@ we merge the data accross **timepoint (Day2, Day7, Day7R)** and **replicates (re
 This allows us to easily  compare across developmental stages.
 
 Example:
+
+```
 modality_merged/
 ├── Day2rep1/
 │ ├── Dam_bb/
@@ -350,7 +354,7 @@ modality_merged/
 │ └── peaks.bed
 ├── cell_picking/metadata.csv
 └── peaks/macs_broad/K27ac_peaks.broadPeak
-
+```
 
 ### Why this layout?
 - Fixes **modality names** (`Dam_bb`, `K27ac_aa`) across all timepoints  
