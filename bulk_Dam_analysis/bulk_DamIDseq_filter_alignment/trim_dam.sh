@@ -7,7 +7,7 @@ cd "$WORKDIR"
 # initialize log file
 echo "" > trim_dam/cutadapt_output.txt
 
-# list of FASTQ R1 files (absolute or relative paths)
+# list of FASTQ read 1 files (absolute or relative paths). read 1 is samplename_R1_001.fastq.gz. read 2 is samplename_R2_001.fastq.gz 
 file_list="/path/to/your/project/raw_fastq_filepaths_dam.txt"
 
 # Create a temporary directory for intermediate files
