@@ -1,12 +1,8 @@
 # histrac_1
-Code for histrac paper, published in bioRxiv 2025
-
-# Project Title
-
 Code for the paper:  
 **"Whole-genome single-cell multimodal history tracing to reveal cell identity transition"**  
 Authors: Yumiko K. Kawamura, Valentina Khalil, and Taro Kitazawa 
-Journal/Preprint: https://www.biorxiv.org/content/10.1101/2025.08.12.669973v1
+Journal/Preprint: bioRxiv (https://www.biorxiv.org/content/10.1101/2025.08.12.669973v1)
 
 ---
 
