@@ -40,3 +40,14 @@ HisTrac-seq enzymatically labels genomic DNA adenine to “bookmark” regulator
 
 ### Visualization
 - IGV (v2.16.0)
+---
+
+## Data
+- Bulk E-MTAB-15336
+- single-cell E-MTAB-15341
+---
+
+## Citation
+Kawamura YK, Khalil V, Kitazawa T (2025).
+Whole-genome single-cell multimodal history tracing to reveal cell identity transition.
+bioRxiv. https://doi.org/10.1101/2025.08.12.669973
