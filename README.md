@@ -45,6 +45,3 @@ HisTrac-seq enzymatically labels genomic DNA adenine to “bookmark” regulator
 For single-cell Dam&Tag / HisTrac-seq data, we used the
 [Nanoscope pipeline](https://github.com/bartosovic-lab/nanoscope) 
 (bartosovic-lab).  
-
-For details on installing and running Nanoscope, please see the
-[`docs/nanoscope`](docs/nanoscope) directory (to be added).
