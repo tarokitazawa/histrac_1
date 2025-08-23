@@ -1,0 +1,23 @@
+samples:
+  Day7RetroDam_DamLeo1_K27ac_FACS:                                                       # Change the name of your sample here
+    fastq_path:
+      /path/to/your/project/raw_fastq/                                                   # Modify path to fastq files here
+    barcodes:                                                                            # Define your different antibody barcodes here
+      Day2.Leo1.rep1: TATAGCCT
+      Day7.Leo1.rep1: ATAGAGGC
+      Day7R.Leo1.rep1: CCTATCCT
+      Day2.K27ac.rep1: AAGGAGTA
+      Day7.K27ac.rep1: CTAAGCCT
+      Day7R.K27ac.rep1: CGTCTAAT
+      Day2.Leo1.rep2: GGCTCTGA
+      Day7.Leo1.rep2: TAATCTTA
+      Day7R.Leo1.rep2: CAGGACGT
+      Day2.K27ac.rep2: GTACTGAC
+      Day7.K27ac.rep2: TCGACTAG
+      Day7R.K27ac.rep2: TAGATCGC
+
+general:
+  tempdir: /path/to/your/project/temp/   # Modify path to a tmp folder already created here
+  cellranger_software: /path/to/your/cellranger_ATAC/cellranger-atac-2.1.0/bin/cellranger-atac             # Modify the path to cellranger binaries here
+  cellranger_ref: /path/to/your/cellranger_ATAC/refdata-cellranger-arc-mm10-2020-A-2.0.0/   # Modify the path to cellranger reference here
+  macs_genome: mm                                                                        # Modify genome for macs2 callpeak
