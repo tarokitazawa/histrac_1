@@ -19,7 +19,7 @@ The workflow for scDam&Tag and scHisTrac-seq follows the Methods section of the 
    - Environment setup and detailed instructions: see the [Nanoscope GitHub page](https://github.com/bartosovic-lab/nanoscope).
 
 2. **Downstream analysis with Seurat / Signac**  
-   - For single-cell analysis, we adopt the **Nanoscope “Analysis using peaks” workflow**, implemented with:
+   - For single-cell analysis, we adopt the **Nanoscope “Analysis using peaks” workflow** (https://fansalon.github.io/vignette_single-cell-nanoCT.html), implemented with:
      - [Seurat](https://satijalab.org/seurat/) (v5.3.0)
      - [Signac](https://stuartlab.org/signac/) (v1.14.0)
    - We provide custom R scripts in this repository.  
