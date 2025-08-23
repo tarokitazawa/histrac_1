@@ -201,159 +201,228 @@ Example:
 
 ```
 modality_merged/
-├── Day2rep1/
-│ ├── Dam_bb/
-│ │ ├── barcode_metrics/
-│ │ │ ├── all_barcodes.txt
-│ │ │ └── peaks_barcodes.txt
-│ │ ├── cellranger/
-│ │ │ └── outs/
-│ │ │ ├── fragments.tsv.gz
-│ │ │ ├── fragments.tsv.gz.tbi
-│ │ │ └── peaks.bed
-│ │ ├── cell_picking/
-│ │ │ └── metadata.csv
-│ │ └── peaks/
-│ │ └── macs_broad/
-│ │ └── Dam_peaks.broadPeak
-│ │
-│ └── K27ac_aa/
-│ ├── barcode_metrics/
-│ │ ├── all_barcodes.txt
-│ │ └── peaks_barcodes.txt
-│ ├── cellranger/
-│ │ └── outs/
-│ │ ├── fragments.tsv.gz
-│ │ ├── fragments.tsv.gz.tbi
-│ │ └── peaks.bed
-│ ├── cell_picking/
-│ │ └── metadata.csv
-│ └── peaks/
-│ └── macs_broad/
-│ └── K27ac_peaks.broadPeak
-│
-├── Day2rep2/
-│ ├── Dam_bb/
-│ │ ├── barcode_metrics/
-│ │ │ ├── all_barcodes.txt
-│ │ │ └── peaks_barcodes.txt
-│ │ ├── cellranger/
-│ │ │ └── outs/
-│ │ │ ├── fragments.tsv.gz
-│ │ │ ├── fragments.tsv.gz.tbi
-│ │ │ └── peaks.bed
-│ │ ├── cell_picking/
-│ │ │ └── metadata.csv
-│ │ └── peaks/
-│ │ └── macs_broad/
-│ │ └── Dam_peaks.broadPeak
-│ │
-│ └── K27ac_aa/
-│ ├── barcode_metrics/
-│ │ ├── all_barcodes.txt
-│ │ └── peaks_barcodes.txt
-│ ├── cellranger/
-│ │ └── outs/
-│ │ ├── fragments.tsv.gz
-│ │ ├── fragments.tsv.gz.tbi
-│ │ └── peaks.bed
-│ ├── cell_picking/
-│ │ └── metadata.csv
-│ └── peaks/
-│ └── macs_broad/
-│ └── K27ac_peaks.broadPeak
-│
-├── Day7rep1/
-│ ├── Dam_bb/
-│ │ ├── barcode_metrics/
-│ │ │ ├── all_barcodes.txt
-│ │ │ └── peaks_barcodes.txt
-│ │ ├── cellranger/outs/
-│ │ │ ├── fragments.tsv.gz
-│ │ │ ├── fragments.tsv.gz.tbi
-│ │ │ └── peaks.bed
-│ │ ├── cell_picking/metadata.csv
-│ │ └── peaks/macs_broad/Dam_peaks.broadPeak
-│ │
-│ └── K27ac_aa/
-│ ├── barcode_metrics/
-│ │ ├── all_barcodes.txt
-│ │ └── peaks_barcodes.txt
-│ ├── cellranger/outs/
-│ │ ├── fragments.tsv.gz
-│ │ ├── fragments.tsv.gz.tbi
-│ │ └── peaks.bed
-│ ├── cell_picking/metadata.csv
-│ └── peaks/macs_broad/K27ac_peaks.broadPeak
-│
-├── Day7rep2/
-│ ├── Dam_bb/
-│ │ ├── barcode_metrics/
-│ │ │ ├── all_barcodes.txt
-│ │ │ └── peaks_barcodes.txt
-│ │ ├── cellranger/outs/
-│ │ │ ├── fragments.tsv.gz
-│ │ │ ├── fragments.tsv.gz.tbi
-│ │ │ └── peaks.bed
-│ │ ├── cell_picking/metadata.csv
-│ │ └── peaks/macs_broad/Dam_peaks.broadPeak
-│ │
-│ └── K27ac_aa/
-│ ├── barcode_metrics/
-│ │ ├── all_barcodes.txt
-│ │ └── peaks_barcodes.txt
-│ ├── cellranger/outs/
-│ │ ├── fragments.tsv.gz
-│ │ ├── fragments.tsv.gz.tbi
-│ │ └── peaks.bed
-│ ├── cell_picking/metadata.csv
-│ └── peaks/macs_broad/K27ac_peaks.broadPeak
-│
-├── Day7Rrep1/
-│ ├── Dam_bb/
-│ │ ├── barcode_metrics/
-│ │ │ ├── all_barcodes.txt
-│ │ │ └── peaks_barcodes.txt
-│ │ ├── cellranger/outs/
-│ │ │ ├── fragments.tsv.gz
-│ │ │ ├── fragments.tsv.gz.tbi
-│ │ │ └── peaks.bed
-│ │ ├── cell_picking/metadata.csv
-│ │ └── peaks/macs_broad/Dam_peaks.broadPeak
-│ │
-│ └── K27ac_aa/
-│ ├── barcode_metrics/
-│ │ ├── all_barcodes.txt
-│ │ └── peaks_barcodes.txt
-│ ├── cellranger/outs/
-│ │ ├── fragments.tsv.gz
-│ │ ├── fragments.tsv.gz.tbi
-│ │ └── peaks.bed
-│ ├── cell_picking/metadata.csv
-│ └── peaks/macs_broad/K27ac_peaks.broadPeak
-│
-└── Day7Rrep2/
-├── Dam_bb/
-│ ├── barcode_metrics/
-│ │ ├── all_barcodes.txt
-│ │ └── peaks_barcodes.txt
-│ ├── cellranger/outs/
-│ │ ├── fragments.tsv.gz
-│ │ ├── fragments.tsv.gz.tbi
-│ │ └── peaks.bed
-│ ├── cell_picking/metadata.csv
-│ └── peaks/macs_broad/Dam_peaks.broadPeak
-│
-└── K27ac_aa/
-├── barcode_metrics/
-│ ├── all_barcodes.txt
-│ └── peaks_barcodes.txt
-├── cellranger/outs/
-│ ├── fragments.tsv.gz
-│ ├── fragments.tsv.gz.tbi
-│ └── peaks.bed
-├── cell_picking/metadata.csv
-└── peaks/macs_broad/K27ac_peaks.broadPeak
+|
++---Day2rep1
+|   +---Dam_bb
+|   |   +---barcode_metrics
+|   |   |       all_barcodes.txt
+|   |   |       peaks_barcodes.txt
+|   |   |
+|   |   +---cellranger
+|   |   |   \---outs
+|   |   |           fragments.tsv.gz
+|   |   |           fragments.tsv.gz.tbi
+|   |   |           peaks.bed
+|   |   |
+|   |   +---cell_picking
+|   |   |       metadata.csv
+|   |   |
+|   |   \---peaks
+|   |       \---macs_broad
+|   |               Dam_peaks.broadPeak
+|   |
+|   \---K27ac_aa
+|       +---barcode_metrics
+|       |       all_barcodes.txt
+|       |       peaks_barcodes.txt
+|       |
+|       +---cellranger
+|       |   \---outs
+|       |           fragments.tsv.gz
+|       |           fragments.tsv.gz.tbi
+|       |           peaks.bed
+|       |
+|       +---cell_picking
+|       |       metadata.csv
+|       |
+|       \---peaks
+|           \---macs_broad
+|                   K27ac_peaks.broadPeak
+|
++---Day2rep2
+|   +---Dam_bb
+|   |   +---barcode_metrics
+|   |   |       all_barcodes.txt
+|   |   |       peaks_barcodes.txt
+|   |   |
+|   |   +---cellranger
+|   |   |   \---outs
+|   |   |           fragments.tsv.gz
+|   |   |           fragments.tsv.gz.tbi
+|   |   |           peaks.bed
+|   |   |
+|   |   +---cell_picking
+|   |   |       metadata.csv
+|   |   |
+|   |   \---peaks
+|   |       \---macs_broad
+|   |               Dam_peaks.broadPeak
+|   |
+|   \---K27ac_aa
+|       +---barcode_metrics
+|       |       all_barcodes.txt
+|       |       peaks_barcodes.txt
+|       |
+|       +---cellranger
+|       |   \---outs
+|       |           fragments.tsv.gz
+|       |           fragments.tsv.gz.tbi
+|       |           peaks.bed
+|       |
+|       +---cell_picking
+|       |       metadata.csv
+|       |
+|       \---peaks
+|           \---macs_broad
+|                   K27ac_peaks.broadPeak
+|
++---Day7rep1
+|   +---Dam_bb
+|   |   +---barcode_metrics
+|   |   |       all_barcodes.txt
+|   |   |       peaks_barcodes.txt
+|   |   |
+|   |   +---cellranger
+|   |   |   \---outs
+|   |   |           fragments.tsv.gz
+|   |   |           fragments.tsv.gz.tbi
+|   |   |           peaks.bed
+|   |   |
+|   |   +---cell_picking
+|   |   |       metadata.csv
+|   |   |
+|   |   \---peaks
+|   |       \---macs_broad
+|   |               Dam_peaks.broadPeak
+|   |
+|   \---K27ac_aa
+|       +---barcode_metrics
+|       |       all_barcodes.txt
+|       |       peaks_barcodes.txt
+|       |
+|       +---cellranger
+|       |   \---outs
+|       |           fragments.tsv.gz
+|       |           fragments.tsv.gz.tbi
+|       |           peaks.bed
+|       |
+|       +---cell_picking
+|       |       metadata.csv
+|       |
+|       \---peaks
+|           \---macs_broad
+|                   K27ac_peaks.broadPeak
+|
++---Day7rep2
+|   +---Dam_bb
+|   |   +---barcode_metrics
+|   |   |       all_barcodes.txt
+|   |   |       peaks_barcodes.txt
+|   |   |
+|   |   +---cellranger
+|   |   |   \---outs
+|   |   |           fragments.tsv.gz
+|   |   |           fragments.tsv.gz.tbi
+|   |   |           peaks.bed
+|   |   |
+|   |   +---cell_picking
+|   |   |       metadata.csv
+|   |   |
+|   |   \---peaks
+|   |       \---macs_broad
+|   |               Dam_peaks.broadPeak
+|   |
+|   \---K27ac_aa
+|       +---barcode_metrics
+|       |       all_barcodes.txt
+|       |       peaks_barcodes.txt
+|       |
+|       +---cellranger
+|       |   \---outs
+|       |           fragments.tsv.gz
+|       |           fragments.tsv.gz.tbi
+|       |           peaks.bed
+|       |
+|       +---cell_picking
+|       |       metadata.csv
+|       |
+|       \---peaks
+|           \---macs_broad
+|                   K27ac_peaks.broadPeak
+|
++---Day7Rrep1
+|   +---Dam_bb
+|   |   +---barcode_metrics
+|   |   |       all_barcodes.txt
+|   |   |       peaks_barcodes.txt
+|   |   |
+|   |   +---cellranger
+|   |   |   \---outs
+|   |   |           fragments.tsv.gz
+|   |   |           fragments.tsv.gz.tbi
+|   |   |           peaks.bed
+|   |   |
+|   |   +---cell_picking
+|   |   |       metadata.csv
+|   |   |
+|   |   \---peaks
+|   |       \---macs_broad
+|   |               Dam_peaks.broadPeak
+|   |
+|   \---K27ac_aa
+|       +---barcode_metrics
+|       |       all_barcodes.txt
+|       |       peaks_barcodes.txt
+|       |
+|       +---cellranger
+|       |   \---outs
+|       |           fragments.tsv.gz
+|       |           fragments.tsv.gz.tbi
+|       |           peaks.bed
+|       |
+|       +---cell_picking
+|       |       metadata.csv
+|       |
+|       \---peaks
+|           \---macs_broad
+|                   K27ac_peaks.broadPeak
+|
+\---Day7Rrep2
+    +---Dam_bb
+    |   +---barcode_metrics
+    |   |       all_barcodes.txt
+    |   |       peaks_barcodes.txt
+    |   |
+    |   +---cellranger
+    |   |   \---outs
+    |   |           fragments.tsv.gz
+    |   |           fragments.tsv.gz.tbi
+    |   |           peaks.bed
+    |   |
+    |   +---cell_picking
+    |   |       metadata.csv
+    |   |
+    |   \---peaks
+    |       \---macs_broad
+    |               Dam_peaks.broadPeak
+    |
+    \---K27ac_aa
+        +---barcode_metrics
+        |       all_barcodes.txt
+        |       peaks_barcodes.txt
+        |
+        +---cellranger
+        |   \---outs
+        |           fragments.tsv.gz
+        |           fragments.tsv.gz.tbi
+        |           peaks.bed
+        |
+        +---cell_picking
+        |       metadata.csv
+        |
+        \---peaks
+            \---macs_broad
+                    K27ac_peaks.broadPeak
 ```
 
 ### Why this layout?
