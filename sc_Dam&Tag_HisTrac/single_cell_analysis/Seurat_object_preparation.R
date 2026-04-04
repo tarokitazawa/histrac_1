@@ -1,6 +1,6 @@
 # Seurat object preparation from nanoscope outputs
 # Cell filtering and QC
-# Merging of rep1 and rep2 (example - Dam-Biv-K27ac Day7-Retrospective (=HisTrac) sample)
+# Merging of rep1 and rep2 (example - DamLeo1-K27ac Day7R (Retrospective (=HisTrac)) sample)
 # Restructuring of nanoscope output is explained in nanoscope_output_restructure.md
 # Modified pipeline of nanoscope https://fansalon.github.io/vignette_single-cell-nanoCT.html
 
@@ -64,12 +64,20 @@ for (smpl in samples) {
 input.ls <- lapply(input.ls,function(x){ makeGRangesFromDataFrame(x) })
 input.ls
 
-#Merging
+# Merge peak sets across replicates for each modality.
+# For the current example (two biological replicates: rep1 and rep2),
+# merging the two peak sets is sufficient.
+# If more samples are included (e.g. additional replicates, stages, or treatment conditions),
+# this section should be generalized accordingly so that peaks are merged across all
+# relevant input objects for each modality.
 combined.peaks.ls <- list()
 for (mod in modalities) {
-  combined.peaks.ls[[mod]] <- reduce(x = c(input.ls[[paste0(mod,"_",samples[1])]],
-                                           input.ls[[paste0(mod,"_",samples[2])]]))
-  
+  combined.peaks.ls[[mod]] <- reduce(
+    x = c(
+      input.ls[[paste0(mod, "_", samples[1])]],
+      input.ls[[paste0(mod, "_", samples[2])]]
+    )
+  )
 }
 combined.peaks.ls
 
@@ -229,22 +237,25 @@ plotCounts(obj = obj.ls, quantiles = c(quant_low), feature = "peak_ratio_MB",yla
 plotCounts(obj = obj.ls.qc, quantiles = c(quant_low), feature = "peak_ratio_MB",ylabel = "% UMI in peaks")
 rm(obj.ls)
 
-
+#-----------------------------------------------------------------------------------------------
+# Sample Merging
+#-----------------------------------------------------------------------------------------------
+# In the current example, this section assumes:
+#   1) two biological replicates (rep1 and rep2), and
+#   2) two modalities (Dam, K27ac) in each replicate.
+# If the number of replicates or modalities differs, this section should be
+# adapted accordingly.
 #-----------------------------------------------------------------------------------------------
 # Plot number of cells for each modality for each sample
 venn1 <- commonCellHistonMarks(mod1 = obj.ls.qc[[paste0(modalities[1],"_",samples[1])]], 
                                name_mod1 = strsplit(modalities[1],"_")[[1]][1],
                                mod2 = obj.ls.qc[[paste0(modalities[2],"_",samples[1])]], 
                                name_mod2 = gsub("H3","",strsplit(modalities[2],"_")[[1]][1]),
-                               mod3 = obj.ls.qc[[paste0(modalities[3],"_",samples[1])]], 
-                               name_mod3 = gsub("H3","",strsplit(modalities[3],"_")[[1]][1]),
                                sample = samples[1] )
 venn2 <- commonCellHistonMarks(mod1 = obj.ls.qc[[paste0(modalities[1],"_",samples[2])]], 
                                name_mod1 = strsplit(modalities[1],"_")[[1]][1],
                                mod2 = obj.ls.qc[[paste0(modalities[2],"_",samples[2])]], 
                                name_mod2 = gsub("H3","",strsplit(modalities[2],"_")[[1]][1]),
-                               mod3 = obj.ls.qc[[paste0(modalities[3],"_",samples[2])]], 
-                               name_mod3 = gsub("H3","",strsplit(modalities[3],"_")[[1]][1]),
                                sample = samples[2] )
 ggarrange(venn1,venn2,ncol=2)
 
