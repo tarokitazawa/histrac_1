@@ -222,9 +222,8 @@ run_k27ac_medoid_transition_analysis <- function(
 # ============================================================
 # Example
 # ============================================================
-# source("k27ac_medoid_transition_minimal.R")
 #
-# Example 1: input is the stage-specific list containing K27ac_aa
+# Example: input is the stage-specific list containing K27ac_aa
 # res_day2 <- run_k27ac_medoid_transition_analysis(
 #   x = combined.obj.ls_Day2.no2,
 #   stage_name = "Day2",
