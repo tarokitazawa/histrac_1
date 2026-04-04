@@ -223,9 +223,8 @@ run_dam_medoid_transition_analysis <- function(
 # ============================================================
 # Example
 # ============================================================
-# source("dam_medoid_transition_minimal.R")
 #
-# Example 1: input is the stage-specific list containing Dam_bb
+# Example : input is the stage-specific list containing Dam_bb
 # res_day2 <- run_dam_medoid_transition_analysis(
 #   x = combined.obj.ls_Day2.no2,
 #   stage_name = "Day2",
