@@ -1,6 +1,6 @@
 # Seurat object preparation from nanoscope outputs
 # clustering, umap, gene activity
-# Merging of rep1 and rep2 (example - Dam-Biv-K27ac Day7-Retrospective (=HisTrac) sample)
+# Merging of rep1 and rep2 (example - DamLeo1-K27ac Day7R (Retrospective (=HisTrac)) sample)
 # Modified pipeline of nanoscope https://fansalon.github.io/vignette_single-cell-nanoCT.html
 
 library(Signac)
@@ -37,6 +37,21 @@ combined.obj.ls <- lapply(combined.obj.ls,FindTopFeatures)
 
 # Dim reduction
 combined.obj.ls <- lapply(combined.obj.ls,RunSVD)
+
+# Inspect the relationship between sequencing depth and latent semantic indexing (LSI) components.
+# This helps identify components that are strongly driven by depth.
+plot.list <- lapply(combined.obj.ls, DepthCorMulMod)
+ggarrange(plot.list[[1]], plot.list[[2]])
+
+# Inspect the variance explained across LSI dimensions.
+# The number of dimensions used in downstream analyses is chosen based on the elbow plots,
+# together with the depth-correlation plots above.
+plot.list_elbow <- lapply(combined.obj.ls, ElbowPlot, reduction = "lsi", ndims = 50)
+ggarrange(plot.list_elbow[[1]], plot.list_elbow[[2]])
+
+# In downstream analyses, the LSI dimensions to use should be selected based on these diagnostics.
+# In practice, the first depth-associated component is often excluded, and the remaining dimensions
+# are chosen according to the elbow structure.
 
 # Run dimension reduction and clustering on each modality individually
 
