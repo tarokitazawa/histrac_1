@@ -110,6 +110,11 @@ summary(metadata.ls)
 plotPassed(metadata.ls,xaxis_text = 9,angle_x=60)
 plotPassedCells(metadata.ls,samples,modalities)
 
+# Cell filtering can also be performed using the nanoscope cell-picking workflow
+# described in the nanoscope vignette.
+# In the present study, however, at least for the in vitro datasets, we used the
+# 10x Cell Ranger-based cell-calling output for downstream filtering.
+
 # 10X-based cell filtering
 metadata.ls <- lapply(metadata.ls, function(x) {
   # Convert if necessary
