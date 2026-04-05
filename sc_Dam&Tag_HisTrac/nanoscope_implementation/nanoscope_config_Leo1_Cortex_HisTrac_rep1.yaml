@@ -3,12 +3,12 @@ samples:
     fastq_path:
       /path/to/your/project/raw_fastq/                                                   # Modify path to fastq files here
     barcodes:                                                                            # Define your different antibody barcodes here
-      P8.Leo1.rep1: CAGGACGT
-      W8.Leo1.rep1: GTACTGAC
-      W8R.Leo1.rep1: TAGATCGC
-      P8.K27ac.rep1: TATAGCCT
-      W8.K27ac.rep1: ATAGAGGC
-      W8R.K27ac.rep1: CCTATCCT
+      Dam.P8.rep1: CAGGACGT
+      Dam.W8.rep1: GTACTGAC
+      Dam.W8R.rep1: TAGATCGC
+      K27ac.P8.rep1: TATAGCCT
+      K27ac.W8.rep1: ATAGAGGC
+      K27ac.W8R.rep1: CCTATCCT
 
 general:
   tempdir: /faststorage/project/kitazawa_lab/Taro/nanoCT_project/temp/   # Modify path to a tmp folder already created here
