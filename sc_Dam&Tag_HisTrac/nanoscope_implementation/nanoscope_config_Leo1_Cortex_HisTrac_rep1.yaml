@@ -1,0 +1,18 @@
+samples:
+  Cortex_DamLeo1_HisTrac_rep1:                                                                         # Change the name of your sample here
+    fastq_path:
+      /path/to/your/project/raw_fastq/                                                   # Modify path to fastq files here
+    barcodes:                                                                            # Define your different antibody barcodes here
+      P8.Leo1.rep1: CAGGACGT
+      W8.Leo1.rep1: GTACTGAC
+      W8R.Leo1.rep1: TAGATCGC
+      P8.K27ac.rep1: TATAGCCT
+      W8.K27ac.rep1: ATAGAGGC
+      W8R.K27ac.rep1: CCTATCCT
+
+general:
+  tempdir: /faststorage/project/kitazawa_lab/Taro/nanoCT_project/temp/   # Modify path to a tmp folder already created here
+  cellranger_software: /faststorage/project/kitazawa_lab/Taro/cellranger_ATAC/cellranger-atac-2.1.0/bin/cellranger-atac             # Modify the path to cellranger binaries here
+  cellranger_ref: /faststorage/project/kitazawa_lab/Taro/cellranger_ATAC/refdata-cellranger-arc-mm10-2020-A-2.0.0/   # Modify the path to cellranger reference here
+  macs_genome: mm                                                                        # Modify genome for macs2 callpeak
+  
