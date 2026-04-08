@@ -139,27 +139,3 @@ plot_stage_medoid_correlation <- function(
   ))
 }
 
-# -------------------------------------------------------------------
-# Example 1: K27ac L4-5 using lsi
-# -------------------------------------------------------------------
-res_k27_l45 <- plot_stage_medoid_correlation(
-  obj = combined.obj.ls3$K27ac_aa,
-  reduction = "lsi",
-  dims_use = 2:14,
-  cell_type = "L4-5",
-  file_pdf = "Leo1_K27ac_L45.pdf",
-  plot_title = "K27ac L4-5: stage medoid correlation"
-)
-
-# -------------------------------------------------------------------
-# Example 2: Dam L4-5 using joint.ref.lsi
-# -------------------------------------------------------------------
-res_dam_l45 <- plot_stage_medoid_correlation(
-  obj = combined.obj.ls3$Dam_bb,
-  reduction = "joint.ref.lsi",
-  dims_use = 1:13,
-  cell_type = "L4-5",
-  file_pdf = "Leo1_Dam_L45.pdf",
-  plot_title = "Dam L4-5: stage medoid correlation"
-)
-
