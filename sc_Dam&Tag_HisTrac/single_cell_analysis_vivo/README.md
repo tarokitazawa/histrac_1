@@ -1,3 +1,3 @@
 In vivo mouse cortex
 
-P8, Week8, and P8-Week 8 HisTrac analysis
+snapshot postnatal day (P8), snapshot adult Week 8, and HisTrac P8-Week 8 analysis
