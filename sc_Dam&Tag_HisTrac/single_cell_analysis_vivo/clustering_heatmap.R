@@ -2,7 +2,7 @@
 # Input object: DamLeo1_vivoHisTrac_rep_merged.rds
 #
 #   - K27ac: based on lsi
-#   - Dam:   based on joint.ref.lsi
+#   - Dam:   based on joint.ref.lsi (see in_vivo_cell_type_annotation.R)
 # Heatmap values:
 #   - Pearson correlation between stage medoids
 #
