@@ -117,10 +117,10 @@ make_tfidf_correlation_heatmap_pdf <- function(
     x,
     modality = c("Dam", "K27ac"),
     output_pdf,
-    group_col = "orig.ident",
-    assay = "peaks",
+    group_col = ,
+    assay = ,
     reduction = "lsi",
-    dims = 2:30,
+    dims = 2:15,
     top_n = 1000,
     clustering_method = "ward.D",
     reverse_order = FALSE) {
@@ -183,54 +183,3 @@ make_tfidf_correlation_heatmap_pdf <- function(
     hc = hc
   ))
 }
-
-# ============================================================
-# Example
-# ============================================================
-# combined.obj.ls <- readRDS("path_to_object/D2_D7_D7R_merged.rds")
-#
-# Dam heatmap
-# res_dam <- make_tfidf_correlation_heatmap_pdf(
-#   x = combined.obj.ls,
-#   modality = "Dam",
-#   output_pdf = "Dam_tfidf_correlation_heatmap.pdf",
-#   group_col = "orig.ident",
-#   dims = 2:30,
-#   top_n = 1000,
-#   reverse_order = TRUE
-# )
-#
-# K27ac heatmap
-# res_k27 <- make_tfidf_correlation_heatmap_pdf(
-#   x = combined.obj.ls,
-#   modality = "K27ac",
-#   output_pdf = "K27ac_tfidf_correlation_heatmap.pdf",
-#   group_col = "orig.ident",
-#   dims = 2:30,
-#   top_n = 1000,
-#   reverse_order = FALSE
-# )
-
-
-# Dam heatmap
-res_dam <- make_tfidf_correlation_heatmap_pdf(
-   x = combined.obj.ls,
-   modality = "Dam",
-   output_pdf = "Dam_tfidf_correlation_heatmap.pdf",
-   group_col = "orig.ident",
-   dims = 2:15,
-   top_n = 1000,
-   reverse_order = TRUE
- )
-#
-# K27ac heatmap
- res_k27 <- make_tfidf_correlation_heatmap_pdf(
-   x = combined.obj.ls,
-   modality = "K27ac",
-   output_pdf = "K27ac_tfidf_correlation_heatmap.pdf",
-   group_col = "orig.ident",
-   dims = 2:15,
-   top_n = 1000,
-   reverse_order = FALSE
- )
-
