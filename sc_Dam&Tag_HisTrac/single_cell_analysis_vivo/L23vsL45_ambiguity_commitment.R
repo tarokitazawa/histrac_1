@@ -7,7 +7,7 @@
 # Assumptions:
 # - object contains:
 #     Cell_Type (L2-3, L4-5)
-#     joint.ref.lsi (Dam modality)
+#     joint.ref.lsi (Dam modality) (see in_vivo_cell_type_annotation.R)
 #     joint.umap
 # - analysis is restricted to W8R Dam cells (i.e., Dam modality of P8-Wk8 HisTrac-seq sample)
 #
