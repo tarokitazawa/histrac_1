@@ -8,7 +8,7 @@
 #     2) local kNN-based symmetric mixing (mix_sym)
 #
 #
-# Note on joint.ref.lsi:
+# Note on joint.ref.lsi (see in_vivo_cell_type_annotation.R):
 # - Dam medoids are computed in joint.ref.lsi, a shared reference-space LSI in which
 #   W8/W8R reference cells retain their original Dam LSI coordinates and P8 cells are
 #   projected onto that adult reference.
