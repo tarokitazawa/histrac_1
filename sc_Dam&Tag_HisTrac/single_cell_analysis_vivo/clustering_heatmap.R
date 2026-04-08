@@ -1,5 +1,5 @@
 # In vivo medoid heatmap examples
-# Input object: DamLeo1_vivoHisTrac_rep_merged.rds
+# Input object: nanoscope_final_peaks_nanoscopefilter_in_vivo_Cell_Type.rds
 #
 #   - K27ac: based on lsi
 #   - Dam:   based on joint.ref.lsi (see in_vivo_cell_type_annotation.R)
@@ -26,7 +26,7 @@ library(pheatmap)
 # -------------------------------------------------------------------
 # Input
 # -------------------------------------------------------------------
-combined.obj.ls3 <- readRDS("DamLeo1_vivoHisTrac_rep_merged.rds")
+combined.obj.ls3 <- readRDS("nanoscope_final_peaks_nanoscopefilter_in_vivo_Cell_Type.rds")
 
 # -------------------------------------------------------------------
 # Helper: rotate 3-stage clustering to the preferred stage order
