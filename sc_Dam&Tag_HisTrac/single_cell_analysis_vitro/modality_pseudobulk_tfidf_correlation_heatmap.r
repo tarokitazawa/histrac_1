@@ -117,13 +117,13 @@ make_tfidf_correlation_heatmap_pdf <- function(
     x,
     modality = c("Dam", "K27ac"),
     output_pdf,
-    group_col = ,
-    assay = ,
+    group_col,
+    assay,
     reduction = "lsi",
     dims = 2:15,
     top_n = 1000,
     clustering_method = "ward.D",
-    reverse_order = FALSE) {
+    reverse_order = FALSE){
 
   modality <- match.arg(modality)
   obj <- get_modality_object(x, modality = modality)
