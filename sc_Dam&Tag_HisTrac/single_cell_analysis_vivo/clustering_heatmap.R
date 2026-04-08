@@ -69,7 +69,7 @@ plot_stage_medoid_correlation <- function(
     obj,
     reduction,
     dims_use,
-    cell_type = "L2-3",
+    cell_type = "L4-5",
     file_pdf,
     plot_title = NULL,
     desired_stage_order = c("P8", "W8R", "W8")) {
