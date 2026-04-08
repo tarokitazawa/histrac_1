@@ -7,7 +7,7 @@
 # - obj@meta.data contains:
 #     timepoint            : "P8" / "W8"
 #     sample or orig.ident : replicate ID
-#     knn_entropy01_01
+#     knn_entropy01_01 (not used in the revised manuscript)
 #     knn_ambiguity_01
 #     commit_strength
 #     nCount_peaks         : optional depth covariate
