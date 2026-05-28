@@ -7,6 +7,12 @@ biological interpretation.
 This demo uses a downsampled nanoscope output from the Day7R Dam-Leo1 scHisTrac-seq
 example. It contains approximately 500 paired single cells across two biological
 replicates and 5,000 selected peaks per modality.
+The downsampled nanoscope output was prepared by
+01_choose_demo_cells.R
+02_make_demo_nanoscope_subset.sh
+
+From the downsampled nanoscope output, Seurat object is prepared by demo_Seurat_object_preparation.R
+and further analysed by demo_clustering_geneactivity_analysis.R
 
 Expected output:
 - combined.obj.ls.demo.rds
