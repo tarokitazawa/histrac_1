@@ -42,6 +42,10 @@ The workflow for scDam&Tag and scHisTrac-seq follows the Methods section of the 
 - single-cell E-MTAB-15341
 ---
 
+## Typical install time on a "normal" desktop computer 
+- 1-2 h
+---
+
 ## Citation
 Kawamura YK, Khalil V, Kitazawa T (2025).
 Whole-genome single-cell multimodal history tracing to reveal cell identity transition.
