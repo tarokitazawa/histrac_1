@@ -1,1 +1,1 @@
-Exported Seurat objects from demo_Seurat_object_preparation.R demo_clustering_geneactivity_analysis.R
+Exported Seurat objects from demo_Seurat_object_preparation.R and demo_clustering_geneactivity_analysis.R
