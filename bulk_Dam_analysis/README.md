@@ -65,6 +65,10 @@ This directory contains the scripts and pipelines used for **bulk DamID-seq** an
 - Bulk E-MTAB-15336
 ---
 
+## Typical install time on a "normal" desktop computer 
+- 1-2 h
+---
+
 ## Citation
 Kawamura YK, Khalil V, Kitazawa T (2025).
 Whole-genome single-cell multimodal history tracing to reveal cell identity transition.
