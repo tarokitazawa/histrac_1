@@ -30,6 +30,8 @@ The workflow for scDam&Tag and scHisTrac-seq follows the Methods section of the 
      - Integration of Dam (historical) vs H3K27ac (present) modalities
      - Visualization of identity jumps
 
+   - For an example of the HisTrac-seq analysis workflow, see the [demo](sc_Dam&Tag_HisTrac/single_cell_analysis_demo).
+
 ---
 
 ## Notes
