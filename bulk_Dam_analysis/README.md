@@ -62,7 +62,7 @@ This directory contains the scripts and pipelines used for **bulk DamID-seq** an
 
 
 ## Data
-- Bulk E-MTAB-15336
+- Bulk E-MTAB-15338
 ---
 
 ## Typical install time on a "normal" desktop computer 
