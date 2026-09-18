@@ -42,6 +42,11 @@ HisTrac-seq enzymatically labels genomic DNA adenine to “bookmark” regulator
 - IGV (v2.16.0)
 ---
 
+## Demo
+For an example of the HisTrac-seq analysis workflow, see the [demo](sc_Dam&Tag_HisTrac/single_cell_analysis_demo).
+
+---
+
 ## Data
 - Bulk E-MTAB-15338
 - single-cell E-MTAB-15341
