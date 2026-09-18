@@ -21,6 +21,7 @@
 #   beginning from 2 after excluding the first raw LSI component.
 
 library(Seurat)
+library(Signac)
 library(pheatmap)
 
 # -------------------------------------------------------------------
