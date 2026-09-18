@@ -43,7 +43,7 @@ HisTrac-seq enzymatically labels genomic DNA adenine to “bookmark” regulator
 ---
 
 ## Data
-- Bulk E-MTAB-15336
+- Bulk E-MTAB-15338
 - single-cell E-MTAB-15341
 ---
 
