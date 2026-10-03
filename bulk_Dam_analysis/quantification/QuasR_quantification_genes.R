@@ -6,9 +6,9 @@ library (parallel)
 library (GenomicRanges)
 library (TxDb.Mmusculus.UCSC.mm10.knownGene)
 
-# qProject prepration
+# qProject preparation
 # working directory
-# Dam_filepaths.txt is the bam input file format of QuasR (tab-delineated, 2 columns with headers FileName and SampleName)
+# Dam_filepaths.txt is the BAM input file format of QuasR (tab-delimited, 2 columns with headers FileName and SampleName)
 path <- '/path/to/your/project/'
 setwd(path)
 getwd()
