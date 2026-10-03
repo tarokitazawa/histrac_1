@@ -9,7 +9,7 @@ path <- '/path/to/your/project/'
 setwd(path)
 getwd()
 
-# Count table produced by QuasR (e.g., QuasR_quantification_bin.R)
+# Count table produced by QuasR (e.g., Dam_10kb_bin_count.rds created by QuasR_quantification_bin.R)
 Dam_count <- readRDS("/path/to/raw_count_table/Dam_10kb_bin_count.rds")
 dim(Dam_count)
 head(Dam_count)
