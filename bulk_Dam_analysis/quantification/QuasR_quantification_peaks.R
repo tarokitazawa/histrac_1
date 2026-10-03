@@ -1,16 +1,10 @@
 # QuasR quantification of bulk Dam for peaks (from BAMs)
 
 library (QuasR)
-library (Rbowtie)
-library (BSgenome)
-library (Rsamtools)
 library (rtracklayer)
 library (GenomicFeatures)
 library (parallel)
 library (GenomicRanges)
-library (edgeR)
-library (Rhisat2)
-library (BSgenome.Mmusculus.UCSC.mm10)
 library (TxDb.Mmusculus.UCSC.mm10.knownGene)
 
 # qProject prepration
