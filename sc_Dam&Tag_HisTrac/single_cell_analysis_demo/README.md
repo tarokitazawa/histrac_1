@@ -266,6 +266,7 @@ harmony
 biovizBase
 future
 stringr
+ggdist
 ```
 
 For regenerating the downsampled nanoscope output from full data, the following command-line tools are also required:
