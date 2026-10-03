@@ -20,9 +20,6 @@
 
 library(Seurat)
 library(ggplot2)
-library(FNN)
-library(viridis)
-library(dplyr)
 
 # -------------------------------------------------------------------
 # Input
