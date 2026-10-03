@@ -15,8 +15,8 @@ library(ggpubr)
 library(EnsDb.Mmusculus.v79)
 
 # directory where the nanoscope repo was cloned
-repodir <- "/path/to/your/nanoscope/"
-source(paste0(repodir, "scripts/functions_scCT2.R"))
+projectdir <- "/path/to/histrac_1/sc_Dam&Tag_HisTrac/"
+source(file.path(projectdir, "helper_functions", "functions_scCT2.R"))
 
 setwd("path/to/your/nanoscope/project/")
 
