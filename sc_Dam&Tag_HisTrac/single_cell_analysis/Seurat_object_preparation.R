@@ -1,7 +1,8 @@
 # Seurat object preparation from nanoscope outputs
 # Cell filtering and QC
 # Merging of rep1 and rep2 (example - DamLeo1-K27ac Day7R (Retrospective (=HisTrac)) sample)
-# Restructuring of nanoscope output is explained in nanoscope_output_restructure.md
+# Restructuring of Nanoscope output for replicate merging is explained in:
+# Conversion_of_Nanoscope_Output_for_Replicate_Merging.md
 # Modified pipeline of nanoscope https://fansalon.github.io/vignette_single-cell-nanoCT.html
 
 library(Signac)
@@ -21,8 +22,8 @@ library(harmony)
 library(biovizBase)
 
 # directory where the nanoscope repo was cloned
-repodir <- "/path/to/your/nanoscope/"
-source(paste0(repodir,"scripts/functions_scCT2.R"))
+projectdir <- "/path/to/histrac_1/sc_Dam&Tag_HisTrac/"
+source(file.path(projectdir, "helper_functions", "functions_scCT2.R"))
 
 setwd("path/to/your/nanoscope/project/")
 
