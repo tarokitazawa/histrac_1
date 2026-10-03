@@ -1,75 +1,348 @@
 # Bulk DamID / Dam&Tag Analysis
 
-This directory contains the scripts and pipelines used for **bulk DamID-seq** and **bulk Dam&Tag** analysis
+This directory contains the preprocessing, quantification, normalization, and visualization workflows used for **bulk DamID-seq** and **bulk Dam&Tag** data in this study.
+
+The two assays use different read preprocessing procedures but converge on the same downstream workflow after alignment:
+
+```text
+Raw paired-end FASTQ
+        |
+        |-- DamID-seq: 5' TC filtering + adapter trimming
+        |
+        `-- Dam&Tag: adapter trimming
+        |
+        v
+Bowtie2 alignment to mm10
+        |
+        v
+sorted/indexed BAM
+        |
+        +------------------------------+
+        |                              |
+        v                              v
+QuasR quantification              QuasR BigWig
+(bins / genes / peaks)                 |
+        |                              v
+        v                       FreeDam-normalized
+CPM normalization                BigWig (optional)
+        |
+        v
+GATC-density normalization
+        |
+        v
+FreeDam normalization
+(optional)
+```
 
 ---
 
-## Overview
+## Directory structure
 
-- Preprocessing of bulk DamID-seq and Dam&Tagreads
-- Generation of normalized coverage tracks 
-- Quantification of m6A signals over genomic features 
-- Visualization of results
+### [`bulk_DamIDseq_filter_alignment/`](bulk_DamIDseq_filter_alignment/)
+
+Preprocessing and alignment of conventional bulk **DamID-seq** reads.
+
+- [`trim_dam.sh`](bulk_DamIDseq_filter_alignment/trim_dam.sh)
+  - Filters paired-end reads for the expected **5′ TC** sequence derived from DpnI digestion.
+  - Discards read pairs without the expected sequence.
+  - Removes sequencing adapters using cutadapt.
+
+- [`align_dam.sh`](bulk_DamIDseq_filter_alignment/align_dam.sh)
+  - Aligns filtered paired-end reads to the **mm10** genome using Bowtie2.
+  - Converts SAM files to sorted and indexed BAM files using samtools.
+
+---
+
+### [`bulk_Dam&Tag_filter_alignment/`](bulk_Dam%26Tag_filter_alignment/)
+
+Preprocessing and alignment of bulk **Dam&Tag** reads.
+
+- [`trim_damtag.sh`](bulk_Dam%26Tag_filter_alignment/trim_damtag.sh)
+  - Removes Nextera adapter sequences using cutadapt.
+
+- [`align_damtag.sh`](bulk_Dam%26Tag_filter_alignment/align_damtag.sh)
+  - Aligns trimmed paired-end reads to the **mm10** genome using Bowtie2.
+  - Converts SAM files to sorted and indexed BAM files using samtools.
+
+After alignment, both DamID-seq and Dam&Tag BAM files are analyzed using the same downstream QuasR workflow.
+
+---
+
+### [`mm10_gatc_bed/`](mm10_gatc_bed/)
+
+Generation of the genomic reference for **GATC motifs**.
+
+- [`generate_mm10_GATC_bed.py`](mm10_gatc_bed/generate_mm10_GATC_bed.py)
+  - Scans the mm10 FASTA sequence for all occurrences of `GATC`.
+  - Writes their genomic coordinates to:
+
+```text
+mm10_GATC.bed
+```
+
+This file is subsequently used for GATC-aware feature selection and GATC-density normalization.
+
+The script requires **Python 3** and **Biopython**.
+
+---
+
+### [`quantification/`](quantification/)
+
+Quantification of bulk Dam signal from aligned BAM files using **QuasR**.
+
+The input sample table (`Dam_filepaths.txt`) is a tab-delimited file containing BAM paths and sample names, for example:
+
+```text
+FileName    SampleName
+/path/to/sample1.bam    sample1
+/path/to/sample2.bam    sample2
+```
+
+When BAM files are provided, QuasR uses the existing alignments rather than realigning the reads.
+
+Three feature-level quantification workflows are provided.
+
+#### [`QuasR_quantification_bin.R`](quantification/QuasR_quantification_bin.R)
+
+Quantifies Dam signal over **10-kb genomic bins**.
+
+- Tiles the major mm10 chromosomes into 10-kb bins.
+- Retains bins containing at least one GATC motif.
+- Quantifies fragments using `qCount()`.
+
+Example output:
+
+```text
+Dam_10kb_bin_count.rds
+```
+
+#### [`QuasR_quantification_genes.R`](quantification/QuasR_quantification_genes.R)
+
+Quantifies Dam signal over **mm10 gene regions**.
+
+- Retrieves genes from `TxDb.Mmusculus.UCSC.mm10.knownGene`.
+- Extends each gene range by 3 kb on both sides.
+- Quantifies Dam signal using `qCount()`.
+
+Example output:
+
+```text
+Dam_gene_count.rds
+```
+
+For analyses restricted to GATC-informative features, genes containing at least one GATC motif can subsequently be selected using `mm10_GATC.bed`.
+
+#### [`QuasR_quantification_peaks.R`](quantification/QuasR_quantification_peaks.R)
+
+Quantifies Dam signal at **ATAC-defined distal regulatory regions**.
+
+- Takes externally generated `ATAC_summits.bed` as input.
+- Expands each summit to ±500 bp.
+- Retains regions containing at least one GATC motif.
+- Removes promoter-overlapping regions.
+- Quantifies the resulting enhancer regions using `qCount()`.
+
+Example output:
+
+```text
+Dam_enhancer_count.rds
+```
+
+`ATAC_summits.bed` is an upstream input and is not generated by the scripts in this directory.
+
+---
+
+### [`normalization/`](normalization/)
+
+Normalization of the QuasR count matrices.
+
+#### [`Dam_GATC_normalization.R`](normalization/Dam_GATC_normalization.R)
+
+Performs:
+
+1. **CPM normalization** of the QuasR count matrix.
+2. Selection of the corresponding GATC-containing genomic features.
+3. Calculation of the number of GATC motifs per feature.
+4. Normalization of Dam signal by GATC density.
+
+The genomic feature definition used during normalization must correspond exactly to that used during quantification:
+
+```text
+10-kb analysis   -> bins / bins_gatc
+gene analysis    -> genes_mm10
+peak analysis    -> atac_peak / atac_peak_gatc_enhancer
+```
+
+Example output:
+
+```text
+Dam_gatcNorm.rds
+```
+
+#### [`Dam_FreeDam_normalization.R`](normalization/Dam_FreeDam_normalization.R)
+
+Calculates Dam-POI / FreeDam ratios after GATC normalization.
+
+Example:
+
+```text
+Dam-Taf3 / FreeDam
+Dam-LaminB1 / FreeDam
+Dam-Biv / FreeDam
+```
+
+A pseudocount is added before ratio calculation to avoid division by zero.
+
+In the analyses described in the paper, **Dam-RNAPII and Dam-Leo1 are normally analyzed without FreeDam normalization**.
+
+Example output:
+
+```text
+Dam_gatcFreeNorm.rds
+```
+
+---
+
+### [`visualization/`](visualization/)
+
+Generation of genome-browser tracks.
+
+#### [`QuasR_bigwig.R`](visualization/QuasR_bigwig.R)
+
+Uses QuasR to generate BigWig coverage tracks directly from BAM files.
+
+The example script uses:
+
+```text
+bin size = 100 bp
+scaling target = 1,000,000 aligned reads
+```
+
+These tracks can be visualized directly in genome browsers such as IGV.
+
+#### [`bigwigCompare_FreeDam_Norm.sh`](visualization/bigwigCompare_FreeDam_Norm.sh)
+
+Uses deepTools `bigwigCompare` to generate **FreeDam-normalized BigWig tracks**.
+
+The input table contains:
+
+```text
+FileName_sample    FileName_ctrl    SampleName
+```
+
+The example script calculates:
+
+```text
+log2(Dam-POI / FreeDam)
+```
+
+using 1-kb bins and a pseudocount of 10.
+
+FreeDam normalization is optional and is not normally applied to Dam-RNAPII or Dam-Leo1 tracks.
 
 ---
 
 ## Requirements
 
-### Software
-- cutadapt (v3.5)
-- Bowtie2 (v2.5.1)
-- samtools (v1.6)
-- deepTools (v3.5.5)
-- IGV (v2.16.0)
+### Command-line software
 
-### R packages
-- QuasR (>= 1.44.0)
+- **cutadapt** v3.5
+- **Bowtie2** v2.5.1
+- **samtools** v1.6
+- **deepTools** v3.5.5  
+  Required only for FreeDam-normalized BigWig generation with `bigwigCompare`.
+
+### Python
+
+- **Python 3**
+- **Biopython**
+
+Python is used only for generation of `mm10_GATC.bed`.
+
+### R / Bioconductor
+
+- **R >= 4.4.0**
+- **QuasR** 1.44.0
+- **edgeR** 4.2.2
+- **BSgenome.Mmusculus.UCSC.mm10**
+- **TxDb.Mmusculus.UCSC.mm10.knownGene**
+
+QuasR installs its core Bioconductor dependencies, including packages used for genomic ranges, BAM handling, and BigWig export.
+
+### Optional
+
+- **IGV** v2.16.0 — visualization of BigWig tracks.
+- **MACS2** — required only if `ATAC_summits.bed` needs to be generated from upstream ATAC-seq data; it is not called directly by the scripts in this directory.
 
 ---
 
-## Workflow
+## Input files
 
-### 1a. Preprocessing for DamID-seq
-- Trim adapters (NEB Next) using cutadapt. Filter DamID reads to retain DpnI-derived fragments (5′ TC overhang)
-- Align to **mm10** reference genome using Bowtie2. Convert and sort BAM files with samtools
+### Raw paired-end FASTQ lists
 
-### 1b. Preprocessing for Dam&Tag
-- Trim adapters (Illumina Nextera) using cutadapt
-- Align to **mm10** reference genome using Bowtie2. Convert and sort BAM files with samtools
+For DamID-seq:
 
-### 2. Quantification
-- Use **QuasR** to count reads in genomic bins or features (e.g., genes, enahancers)
+```text
+/path/to/your/project/raw_fastq_filepaths_dam.txt
+```
 
-### 3. Normalization
-- Generate CPM (counts per million) matrices
-- Normalize by GATC density
-- Normalize by FreeDam (except for Dam-RNAPII, Dam-Leo1)
+For Dam&Tag:
 
-### 4. Visualization
-- Generate bigwig by QuasR
-- Generate FreeDam-normalized bigwig by deepTools
-- Visualization with IGV
+```text
+/path/to/your/project/raw_fastq_filepaths_damtag.txt
+```
+
+Each file contains paths to Read 1 files:
+
+```text
+/path/to/your/raw_fastq/sample1_R1_001.fastq.gz
+```
+
+The corresponding Read 2 path is inferred as:
+
+```text
+/path/to/your/raw_fastq/sample1_R2_001.fastq.gz
+```
+
+### QuasR BAM sample table
+
+```text
+Dam_filepaths.txt
+```
+
+with columns:
+
+```text
+FileName    SampleName
+```
+
+### Reference files
+
+- mm10 FASTA
+- Bowtie2 mm10 genome index
+- `BSgenome.Mmusculus.UCSC.mm10`
+- `TxDb.Mmusculus.UCSC.mm10.knownGene`
+- [`mm10_GATC.bed`](mm10_gatc_bed/)
+- `ATAC_summits.bed` for enhancer-level quantification
+
 ---
-## examples of raw fastq files (paried end)
-- DamID-seq fastq files: /path/to/your/project/raw_fastq_filepaths_dam.txt
-- Dam&Tag fastq files: /path/to/your/project/raw_fastq_filepaths_damtag.txt
-- Read1: /path/to/your/raw_fastq/sample1_R1_001.fastq.gz
-- Read2: /path/to/your/raw_fastq/sample1_R2_001.fastq.gz
----
-## GATC regions of mm10
-- mm10_GATC.bed
----
-
 
 ## Data
-- Bulk E-MTAB-15338
+
+Bulk sequencing dataset:
+
+**E-MTAB-15338**
+
 ---
 
-## Typical install time on a "normal" desktop computer 
-- 1-2 h
+## Typical install time on a "normal" desktop computer
+
+Approximately **1–2 h**, excluding download of large genome reference files.
+
 ---
 
 ## Citation
-Kawamura YK, Khalil V, Kitazawa T (2025).
-Whole-genome single-cell multimodal history tracing to reveal cell identity transition.
+
+Kawamura YK, Khalil V, Kitazawa T (2025).  
+**Whole-genome single-cell multimodal history tracing to reveal cell identity transition.**  
 bioRxiv. https://doi.org/10.1101/2025.08.12.669973
