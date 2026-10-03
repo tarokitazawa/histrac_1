@@ -36,7 +36,6 @@ library(Signac)
 library(ggplot2)
 library(patchwork)
 library(uwot)
-library(dplyr)
 
 # -------------------------------------------------------------------
 # Input
