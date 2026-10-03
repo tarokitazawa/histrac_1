@@ -49,29 +49,6 @@ Detailed preprocessing, software requirements, and analysis instructions are pro
 
 ---
 
-## Analysis overview
-
-```text
-Bulk DamID / Dam&Tag
-        |
-        +--> read preprocessing and alignment
-        +--> QuasR quantification
-        +--> GATC / FreeDam normalization
-        `--> genome-browser tracks
-
-
-Single-cell Dam&Tag / HisTrac-seq
-        |
-        +--> Nanoscope preprocessing
-        +--> Seurat / Signac object preparation
-        +--> clustering and gene activity analysis
-        +--> historical vs present-state comparison
-        |
-        +--> in vitro HisTrac analyses
-        `--> in vivo cortical HisTrac analyses
-```
-
----
 
 ## Demo
 
