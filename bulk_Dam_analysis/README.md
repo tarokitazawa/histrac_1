@@ -323,13 +323,6 @@ FileName	SampleName
 /path/to/bam/FreeDam_rep1.bam	FreeDam_rep1
 ```
 
-This file is used by:
-
-- [`quantification/QuasR_quantification_bin.R`](quantification/QuasR_quantification_bin.R)
-- [`quantification/QuasR_quantification_genes.R`](quantification/QuasR_quantification_genes.R)
-- [`quantification/QuasR_quantification_peaks.R`](quantification/QuasR_quantification_peaks.R)
-- [`visualization/QuasR_bigwig.R`](visualization/QuasR_bigwig.R)
-
 ---
 
 ### GATC motif coordinates
@@ -386,7 +379,7 @@ chr1	201840	201841	peak_3	91
 `ATAC_summits.bed` is an upstream input and is not generated within the `bulk_Dam_analysis/` workflow.
 
 
-
+---
 ### Reference files
 
 - mm10 FASTA
