@@ -210,6 +210,37 @@ Seurat_object/combined.obj.ls_analysis.demo.rds
 
 ---
 
+## Helper functions
+
+The demo analysis uses custom helper functions provided in:
+
+[`../helper_functions/functions_scCT2.R`](../helper_functions/functions_scCT2.R)
+
+`functions_scCT2.R` is adapted from the helper functions accompanying the Nanoscope single-cell analysis workflow. It retains the core Nanoscope utility functions while including modifications used in the scDam&Tag/scHisTrac-seq analyses in this repository.
+
+In the demo, these helper functions are used mainly for:
+
+- visualization of cell- and modality-level QC metrics;
+- identification and visualization of cells passing filtering criteria;
+- comparison of cells shared between Dam and H3K27ac modalities;
+- visualization of sequencing-depth effects; and
+- visualization of matched cells across modalities.
+
+The helper script is included directly in this repository so that the demo does not require modification of a local Nanoscope installation.
+
+The R scripts source this file from the HisTrac repository, for example:
+
+```r
+projectdir <- "/path/to/histrac_1/sc_Dam&Tag_HisTrac/"
+source(file.path(projectdir, "helper_functions", "functions_scCT2.R"))
+```
+
+For a summary of the modifications relative to the original Nanoscope helper functions, see:
+
+[`../helper_functions/README.md`](../helper_functions/README.md)
+
+---
+
 ## Required software
 
 The demo was designed for an R/Signac/Seurat workflow.
@@ -351,17 +382,6 @@ No non-standard hardware is required for the demo. A standard workstation or lap
 
 The full-scale analysis of the complete single-cell HisTrac-seq dataset requires substantially more memory and storage and is recommended on a workstation or HPC system.
 
----
-
-## Known warnings
-
-During TF-IDF normalization or feature selection, warnings such as the following may appear:
-
-```text
-Some features contain 0 total counts
-```
-
-This can occur after the QC and paired-cell filtering steps in the downsampled demo dataset. For the purpose of checking that the workflow runs and produces the expected objects, this warning is usually safe to ignore.
 
 ---
 
