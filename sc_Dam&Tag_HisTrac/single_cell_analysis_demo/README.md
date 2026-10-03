@@ -148,8 +148,8 @@ Main operations:
 Before running, edit the following paths in the script:
 
 ```r
-repodir <- "/path/to/your/nanoscope/"
-setwd("path/to/your/Day7R_MERGED_demo/")
+projectdir <- "/path/to/histrac_1/sc_Dam&Tag_HisTrac/"
+setwd("/path/to/histrac_1/sc_Dam&Tag_HisTrac/single_cell_analysis_demo/Day7R_MERGED_demo/")
 ```
 
 Run:
@@ -186,8 +186,8 @@ Main operations:
 Before running, edit the following paths in the script:
 
 ```r
-repodir <- "/path/to/your/nanoscope/"
-setwd("path/to/your/Day7R_MERGED_demo/")
+projectdir <- "/path/to/histrac_1/sc_Dam&Tag_HisTrac/"
+setwd("/path/to/histrac_1/sc_Dam&Tag_HisTrac/single_cell_analysis_demo/Day7R_MERGED_demo/")
 ```
 
 Run:
@@ -277,15 +277,6 @@ sort
 zcat
 ```
 
-The scripts also source helper functions from a local clone of the nanoscope repository:
-
-```r
-repodir <- "/path/to/your/nanoscope/"
-source(paste0(repodir, "scripts/functions_scCT2.R"))
-```
-
-Please update `repodir` to the location of your local nanoscope clone before running the scripts.
-
 ---
 
 ## Quick start
@@ -299,8 +290,8 @@ cd 'sc_Dam&Tag_HisTrac/single_cell_analysis_demo'
 Edit paths in both R scripts:
 
 ```r
-repodir <- "/path/to/your/nanoscope/"
-setwd("path/to/your/histrac_1/sc_Dam&Tag_HisTrac/single_cell_analysis_demo/Day7R_MERGED_demo/")
+projectdir <- "/path/to/histrac_1/sc_Dam&Tag_HisTrac/"
+setwd("/path/to/histrac_1/sc_Dam&Tag_HisTrac/single_cell_analysis_demo/Day7R_MERGED_demo/")
 ```
 
 Then run:
