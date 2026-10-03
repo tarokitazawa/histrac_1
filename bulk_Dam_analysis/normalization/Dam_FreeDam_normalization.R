@@ -11,7 +11,7 @@ path <- '/path/to/your/project/'
 setwd(path)
 getwd()
 
-# GATC-Normalized count table produced by QuasR (e.g., Dam_GATC_normalization.R)
+# GATC-Normalized count table produced by QuasR (e.g., Dam_gatcNorm.rds created by Dam_GATC_normalization.R)
 Dam_gatcNorm <- readRDS("/path/to/your/normalized_count/Dam_gatcNorm.rds")
 dim(Dam_gatcNorm)
 head(Dam_gatcNorm)
