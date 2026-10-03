@@ -1,14 +1,8 @@
 # Dam normalization by GATC frequency
 
-library (QuasR)
-library (Rbowtie)
-library (BSgenome)
-library (Rsamtools)
-library (GenomicFeatures)
-library (parallel)
-library (Rhisat2)
-library (BSgenome.Mmusculus.UCSC.mm10)
-library (TxDb.Mmusculus.UCSC.mm10.knownGene)
+library (edgeR)
+library (rtracklayer)
+library (GenomicRanges)
 
 # working directory
 path <- '/path/to/your/project/'
