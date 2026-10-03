@@ -25,6 +25,7 @@
 library(Seurat)
 library(FNN)
 library(glmnet)
+library(ggplot2)
 
 # -------------------------------------------------------------------
 # Input
@@ -525,11 +526,8 @@ dev.off()
 #     EdgeR_geneSets_6groups_EarlyConsistentLate.csv
 # ============================================================
 
-library(Seurat)
-library(dplyr)
 library(tidyr)
 library(stringr)
-library(ggplot2)
 library(scales)
 library(SingleCellExperiment)
 library(slingshot)
