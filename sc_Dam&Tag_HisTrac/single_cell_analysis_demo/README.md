@@ -60,7 +60,9 @@ cellranger/outs/peaks.bed
 peaks/macs_broad/*_peaks.broadPeak
 barcode_metrics/
 ```
+
 The demo additionally uses the shared helper functions in [`../helper_functions/`](../helper_functions/).
+
 ---
 
 ## Demo dataset
