@@ -275,10 +275,11 @@ QuasR installs its core Bioconductor dependencies, including packages used for g
 - **MACS2** — required only if `ATAC_summits.bed` needs to be generated from upstream ATAC-seq data; it is not called directly by the scripts in this directory.
 
 ---
-
 ## Input files
 
 ### Raw paired-end FASTQ lists
+
+The preprocessing scripts take a text file listing the **Read 1 FASTQ files**.
 
 For DamID-seq:
 
@@ -292,29 +293,99 @@ For Dam&Tag:
 /path/to/your/project/raw_fastq_filepaths_damtag.txt
 ```
 
-Each file contains paths to Read 1 files:
+Example:
 
 ```text
-/path/to/your/raw_fastq/sample1_R1_001.fastq.gz
+/path/to/raw_fastq/sample1_R1_001.fastq.gz
+/path/to/raw_fastq/sample2_R1_001.fastq.gz
+/path/to/raw_fastq/sample3_R1_001.fastq.gz
 ```
 
-The corresponding Read 2 path is inferred as:
+The corresponding Read 2 file is expected to have the matching name:
 
 ```text
-/path/to/your/raw_fastq/sample1_R2_001.fastq.gz
+sample1_R1_001.fastq.gz
+sample1_R2_001.fastq.gz
 ```
+
+---
 
 ### QuasR BAM sample table
 
-```text
-Dam_filepaths.txt
-```
+The quantification and BigWig-generation scripts use a tab-delimited QuasR sample table (`Dam_filepaths.txt`) containing the aligned BAM file and sample name.
 
-with columns:
+Example:
 
 ```text
-FileName    SampleName
+FileName	SampleName
+/path/to/bam/DamLeo1_rep1.bam	DamLeo1_rep1
+/path/to/bam/DamLeo1_rep2.bam	DamLeo1_rep2
+/path/to/bam/FreeDam_rep1.bam	FreeDam_rep1
 ```
+
+This file is used by:
+
+- [`quantification/QuasR_quantification_bin.R`](quantification/QuasR_quantification_bin.R)
+- [`quantification/QuasR_quantification_genes.R`](quantification/QuasR_quantification_genes.R)
+- [`quantification/QuasR_quantification_peaks.R`](quantification/QuasR_quantification_peaks.R)
+- [`visualization/QuasR_bigwig.R`](visualization/QuasR_bigwig.R)
+
+---
+
+### GATC motif coordinates
+
+[`mm10_gatc_bed/mm10_GATC.bed`](mm10_gatc_bed/mm10_GATC.bed) provides the genomic coordinates of **GATC motifs in the mouse mm10 genome**.
+
+Example BED entries:
+
+```text
+chr1	12345	12349
+chr1	12782	12786
+chr1	13501	13505
+```
+
+The file is used to identify genomic features containing GATC sites and to normalize Dam signal according to GATC density.
+
+It is used directly by:
+
+- [`quantification/QuasR_quantification_bin.R`](quantification/QuasR_quantification_bin.R) — retains 10-kb bins containing at least one GATC motif.
+- [`quantification/QuasR_quantification_peaks.R`](quantification/QuasR_quantification_peaks.R) — retains ATAC-defined regions containing at least one GATC motif.
+- [`normalization/Dam_GATC_normalization.R`](normalization/Dam_GATC_normalization.R) — calculates the number of GATC motifs within each genomic feature for GATC-density normalization.
+
+The current [`quantification/QuasR_quantification_genes.R`](quantification/QuasR_quantification_genes.R) script quantifies all defined gene regions and does not directly use `mm10_GATC.bed`.
+
+For analyses using another genome assembly or species, an equivalent GATC BED file should be generated from the corresponding reference genome. The provided [`mm10_gatc_bed/generate_mm10_GATC_bed.py`](mm10_gatc_bed/generate_mm10_GATC_bed.py) script can be adapted for this purpose.
+
+---
+
+### ATAC peak summits
+
+Enhancer-level Dam quantification requires an ATAC-seq peak-summit BED file:
+
+```text
+/path/to/your/ATAC_peak/ATAC_summits.bed
+```
+
+In this study, ATAC peaks were identified by **MACS2 narrow-peak calling**, and peak summits were obtained from the corresponding MACS2 `*_summits.bed` output.
+
+Example:
+
+```text
+chr1	100000	100001	peak_1	72
+chr1	145320	145321	peak_2	55
+chr1	201840	201841	peak_3	91
+```
+
+[`quantification/QuasR_quantification_peaks.R`](quantification/QuasR_quantification_peaks.R) uses these summit positions to:
+
+1. define ±500-bp regions around each summit;
+2. retain regions containing at least one GATC motif;
+3. remove promoter-overlapping regions; and
+4. quantify Dam signal over the resulting distal ATAC regions.
+
+`ATAC_summits.bed` is an upstream input and is not generated within the `bulk_Dam_analysis/` workflow.
+
+
 
 ### Reference files
 
