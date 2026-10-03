@@ -6,9 +6,9 @@ library (parallel)
 library (GenomicRanges)
 library (TxDb.Mmusculus.UCSC.mm10.knownGene)
 
-# qProject prepration
+# qProject preparation
 # working directory
-# Dam_filepaths.txt is the bam input file format of QuasR (tab-delineated, 2 columns with headers FileName and SampleName)
+# Dam_filepaths.txt is the BAM input file format of QuasR (tab-delimited, 2 columns with headers FileName and SampleName)
 path <- '/path/to/your/project/'
 setwd(path)
 getwd()
@@ -22,7 +22,7 @@ proj_Dam <- qAlign("Dam_filepaths.txt", "BSgenome.Mmusculus.UCSC.mm10",
 genome <- BSgenome.Mmusculus.UCSC.mm10
 main_chroms <- paste0("chr", c(1:19, "X", "Y"))
 chrom_lengths <- seqlengths(genome)[main_chroms]
-bin_size <- 10000  # this is for 10kb bin
+bin_size <- 10000  # this is for 10 kb bin
 bins <- tileGenome(seqlengths = chrom_lengths,
                    tilewidth = bin_size,
                    cut.last.tile.in.chrom = TRUE)
