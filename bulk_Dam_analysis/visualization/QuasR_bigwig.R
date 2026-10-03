@@ -1,16 +1,6 @@
 # Bigwig preparation from BAM files with QuasR
 library (QuasR)
-library (Rbowtie)
-library (BSgenome)
-library (Rsamtools)
-library(rtracklayer)
-library(GenomicFeatures)
-library(Gviz)
 library (parallel)
-library(GenomicRanges)
-library(edgeR)
-library(Rhisat2)
-library(BSgenome.Mmusculus.UCSC.mm10)
 
 # qProject prepration
 # working directory
