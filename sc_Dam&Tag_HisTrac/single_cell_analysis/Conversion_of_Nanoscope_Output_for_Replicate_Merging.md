@@ -1,13 +1,20 @@
 # Conversion of Nanoscope Output for Replicate Merging
 
-For downstream Seurat/Signac analysis, we followed vignette of nanoscope_base (https://fansalon.github.io/vignette_single-cell-nanoCT.html)
-Here, we needed to **merge biological replicates** (e.g., rep1, rep2).  
-However, the default **Nanoscope output structure** nests each modality directly under the experiment folder, which is not optimal for merging for the above pipeline.
+The downstream Seurat/Signac workflow in this repository is adapted from the Nanoscope [“Analysis using peaks” vignette](https://fansalon.github.io/vignette_single-cell-nanoCT.html).
+
+Nanoscope generates separate output directories for each demultiplexed sample and modality. For the analyses in this study, we frequently needed to combine **biological replicates**, and in some analyses also multiple **timepoints or experimental conditions**, within a common Seurat/Signac workflow.
+
+We therefore reorganized the standard Nanoscope output into a consistent directory structure before running [`Seurat_object_preparation.R`](Seurat_object_preparation.R).
+
+This restructuring does not modify the underlying Nanoscope results. It only reorganizes and renames the output directories and files so that replicate and condition information can be handled consistently by the downstream analysis scripts.
+
+The Nanoscope preprocessing and demultiplexing workflow used to generate the source files is described in [`../nanoscope_implementation/`](../nanoscope_implementation/).
 
 ---
 
-## Original Nanoscope Output (per experiment)
-As an example, the structure shown below corresponds to the **Day7R (HisTrac)** sample from the **Dam-Leo1** dataset.
+## Original Nanoscope Output
+
+As an example, the structure below corresponds to the **Day7R (HisTrac)** sample from the **Dam-Leo1** dataset.
 
 ```
 Day7R_Rep1/
@@ -192,7 +199,7 @@ This restructuring provides:
 
 ---
 
-## Alternative Layout: Merging Across Timepoints
+## Alternative Layout: Joint Analysis Across Timepoints or Experimental Conditions
 
 In some analyses (e.g. **medoid calculation** and direct cross-condition comparison),  
 we merge the data across **timepoints** and **replicates (rep1, rep2)** within a single experiment.  
