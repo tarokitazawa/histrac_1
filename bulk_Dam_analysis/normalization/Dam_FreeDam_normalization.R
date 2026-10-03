@@ -11,7 +11,7 @@ path <- '/path/to/your/project/'
 setwd(path)
 getwd()
 
-# GATC-Normalized count table produced by QuasR (e.g., Dam_normalization.R)
+# GATC-Normalized count table produced by QuasR (e.g., Dam_GATC_normalization.R)
 Dam_gatcNorm <- readRDS("/path/to/your/normalized_count/Dam_gatcNorm.rds")
 dim(Dam_gatcNorm)
 head(Dam_gatcNorm)
@@ -45,7 +45,7 @@ sample_info <- list(
   c("Taf3_Day7_rep1", "FreeDam_Day7_rep1", "Taf3_Day7_FreeDamNorm_rep1"),
   c("Taf3_Day7_rep2", "FreeDam_Day7_rep2", "Taf3_Day7_FreeDamNorm_rep2"),
   c("Taf3_Day7_R_rep1", "FreeDam_Day7_R_rep1", "Taf3_Day7_R_FreeDamNorm_rep1"),
-  c("Taf3_Day7_R_rep2", "FreeDam_Day7_R_rep2", "Taf3_Day7_R_FreeDamNorm_rep2"),
+  c("Taf3_Day7_R_rep2", "FreeDam_Day7_R_rep2", "Taf3_Day7_R_FreeDamNorm_rep2")
 )
 
 Dam_gatcFreeNorm <- create_ratio_df(
