@@ -7,9 +7,9 @@ library (parallel)
 library (GenomicRanges)
 library (TxDb.Mmusculus.UCSC.mm10.knownGene)
 
-# qProject prepration
+# qProject preparation
 # working directory
-# Dam_filepaths.txt is the bam input file format of QuasR (tab-delineated, 2 columns with headers FileName and SampleName)
+# Dam_filepaths.txt is the BAM input file format of QuasR (tab-delimited, 2 columns with headers FileName and SampleName)
 path <- '/path/to/your/project/'
 setwd(path)
 getwd()
@@ -19,7 +19,8 @@ proj_Dam <- qAlign("Dam_filepaths.txt", "BSgenome.Mmusculus.UCSC.mm10",
                    clObj = cl
 )
 
-#Grange of ATAC peaks (called by MACS2).
+# Grange based on ATAC peaks (narrow peaks called by MACS2).
+# We prepared 1 kb window around summits. 
 df <- read.table("/path/to/your/ATAC_peak/ATAC_summits.bed", 
                  header = FALSE, sep = "\t", quote = "", stringsAsFactors = FALSE)
 colnames(df) <- c("chr", "summit_start", "summit_end", "peakID", "score")
