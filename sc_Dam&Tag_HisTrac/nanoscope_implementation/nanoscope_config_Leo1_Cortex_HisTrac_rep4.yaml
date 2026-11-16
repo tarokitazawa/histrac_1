@@ -11,8 +11,8 @@ samples:
       K27ac.W8R.rep4: GGCTCTGA
 
 general:
-  tempdir: /faststorage/project/kitazawa_lab/Taro/nanoCT_project/temp/   # Modify path to a tmp folder already created here
-  cellranger_software: /faststorage/project/kitazawa_lab/Taro/cellranger_ATAC/cellranger-atac-2.1.0/bin/cellranger-atac             # Modify the path to cellranger binaries here
-  cellranger_ref: /faststorage/project/kitazawa_lab/Taro/cellranger_ATAC/refdata-cellranger-arc-mm10-2020-A-2.0.0/   # Modify the path to cellranger reference here
+  tempdir: /path/to/your/project/temp/   # Modify path to a tmp folder already created here
+  cellranger_software: /path/to/your/cellranger_ATAC/cellranger-atac-2.1.0/bin/cellranger-atac             # Modify the path to cellranger binaries here
+  cellranger_ref: /path/to/your/cellranger_ATAC/refdata-cellranger-arc-mm10-2020-A-2.0.0/   # Modify the path to cellranger reference here
   macs_genome: mm                                                                        # Modify genome for macs2 callpeak
   
