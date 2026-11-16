@@ -16,13 +16,10 @@
 #     2) mean TF-IDF per sample/group
 #     3) Pearson correlation between group-level mean TF-IDF profiles
 #     4) a clustered correlation heatmap saved as PDF
-#
 # Notes:
 # - This script intentionally keeps only the essential steps used for the final
 #   PDF heatmaps.
-# - Custom color-scale tuning is intentionally omitted.
-# - By default, columns/rows are grouped by 'orig.ident', but this can be
-#   changed to another metadata column such as 'sample'.
+#
 # ============================================================
 
 library(Signac)
